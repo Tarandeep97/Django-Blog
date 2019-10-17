@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+    <script src = "{% static 'blog/calender.js' %}" type="text/javascript"></script>
+
+	{% if title %}
+	<title>ACM Blog --{{title}}</title>
+	{% else %}
+	<title>Django Blog</title>
+	{% endif %}
+</head>
+<body>
+	<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="/">ACM BBSBEC Chapter Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+
+          <a class="nav-item nav-link" href="{% url 'post_create' %}">New Post</a>
+
+          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+
+          {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+  	<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">
+          {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </div>
+    <div class="col-md-4">
+        <p>
+         <iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FKolkata&amp;src=YmJzYmVjYWNtQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%237986CB&amp;color=%2333B679&amp;color=%230B8043" style="border-width:5" width="434" height="400" frameborder="0" scrolling="no"></iframe>
+        </p>
+      </div>
+  </div>
+</main>
+<hr>
+<footer class="page-footer font-small stylish-color-dark pt-4-steel" id='reach'>
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Meet Us at</h5>
+        <p>Baba Banda Singh Bahadur Engineering College, Chandigarh Rd, Fatehgarh Sahib, Punjab 140407
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">CALL US UP</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>+91-83607-71866</p>
+          </li>
+          <li>
+            <p>+91-62839-78476</p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Mail Us</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="mailto:taranpreets1999@gmail.com">taranpreets1999@gmail.com</a>
+          </li>
+          <li>
+            <a href="mailto:kaur67931@gmail.com">kaur67931@gmail.com</a>
+          </li>
+          <li>
+            <a href="mailto:kaur67931@gmail.com">bbsbecacm@gmail.com</a>
+          </li>
+        </ul>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">For membership info</h5>
+        <a href="mailto:perminder.kaur@bbsbec.ac.in">perminder.kaur@bbsbec.ac.in</a>
+        <br>
+        <a href="mailto:ravneet.kaur@bbsbec.ac.in">ravneet.kaur@bbsbec.ac.in</a>
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Want to join us?</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">Register here!</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+  <hr>
+</div>
+<div class="container" >
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-left">
+          <span class="copyright">Copyright &copy; ACM BBSBEC 2019</span>
+        </div>
+       
+        <div class="col-md-6 text-right">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="https://github.com/ACM-BBSBEC/acm-bbsbec-official/blob/master/LICENSE">Licenced under GNU LGPL v3.0</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>
+<hr>
+  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
