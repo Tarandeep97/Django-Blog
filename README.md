@@ -1,4 +1,5 @@
 # Django-Blog
+Screenshots
 ![Screenshot (238)](https://user-images.githubusercontent.com/28994081/67066812-b8884100-f191-11e9-97e4-f52ac3a5eff5.png)
 
 ![Screenshot (241)](https://user-images.githubusercontent.com/28994081/67066803-b2926000-f191-11e9-8fe1-973d2fef43ce.png)
